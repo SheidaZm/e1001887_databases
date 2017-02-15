@@ -1,4 +1,4 @@
-This is some changes
+
 1.	select all the countries: select * from country;
 2.	select just all the country names : select name from country;
 3.	select name and capital of all the countries: select name, capital from country;
