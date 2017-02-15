@@ -1,0 +1,32 @@
+1.	select all the countries: select * from country;
+2.	select just all the country names : select name from country;
+3.	select name and capital of all the countries: select name, capital from country;
+4.	select just all the country names in descending mode (last alphabets first): select name from country order by name desc;
+5.	select just all the country names just for five first countries: select name from country limit 5;
+6.	select just all the country names just for 100 first countries: select name from country limit 100;
+7.	select just all the country names but order the result by the country name: select name from country order by name;
+8.	select name of the countries where the name has 'ia': select name from country where name like '%ia%';
+9.	select region and the country names but order the result initially by the region and then by the country name: 
+select region, name from country order by region, name;
+10.	select the country names ordered by the population, the biggest countries first: select name, population from country order by CAST(population AS int) Desc;
+//because population type is text and not int so we changed it
+11.	select the name and the region of all the countries: select name, region from country;
+12.	find countries with the name starting with Y-letter: select name from country where name like ‘y%’;
+13.	find region and name of countries where the region is Europe: select region, name from country where continent like ‘Europe’;
+14.	find region and name of countries  where the region is Europe or Asia: select region, name from country where continent=’Europe’ OR continent=’Asia’;
+15.	find region, name and population of the first biggest European counties by size: select region, name, population from country where continent=’Europe’ order by CAST(population AS int) Desc;
+16.	select the name and life expectancy of countries where life expectancy is more than 80:  select name, lifeexpectancy from country where CAST(lifeexpectancy AS int) > 80 and lifeexpectancy is not null;
+17.	select the name and population of countries where the number of population is between 5 and 10 million people: select name, population from country where CAST(population AS int)>5000000 and CAST(population AS int)<10000000;
+18.	select the name and population of countries where the number of population is between 5 and 10 million people that are in Europe ordered by population descending: select name, population, continent from country where CAST(population AS int)>5000000 and CAST(population AS int)<10000000 and continent=’Europe’ order by CAST(population AS int) Desc;
+19.	select the names of countries that start with A-letter but do locate outside Europe: select name, continent from country where name like ’a%’ and continent not like ‘Europe’;
+20.	select the name and population of the country that has most of population:  select name, population from country order by CAST(population as int) desc limit 1;
+21.	select the name and life expectancy of the country that has shortest life expectancy (not NULL one):  select name, lifeexpectancy from country where lifeexpectancy!='NULL' order by lifeexpectancy limit 1
+22.	count the total number of population in the table: select sum(CAST(population as int)) from country as “Total population”;
+23.	find all the Republic countries: select name from country where name like ‘Republic’;
+24.	find countries who became independent after 1975: select name, indepyear from country where CAST(indepyear as int) > 1975;
+25.	find the ten oldest countries based on indepyear the name and year: select name, indepyear from country where indepyear is not null order by CAST(indepyear as int) asc limit 10;
+26.	select the current date and time (2017-01-11 09:01:20): select datetime(‘now’);
+27.	find out what is the current year (2017): select strftime(‘%Y’,’now’);
+28.	calculate how old is the oldest existing country (UK): select strftime('%Y', 'now')-min(CAST(indepyear as int)) from country;
+29.	calculate how old will Finland be this year: select strftime('%Y', 'now')-CAST(indepyear as int) from country where name='Finland';
+30.	find out how many countries there is where the country name equals to localname:  select count(name) from country where name=localname;

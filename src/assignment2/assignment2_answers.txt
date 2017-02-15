@@ -1,0 +1,35 @@
+CREATE TABLE powerunit (id int primary key not null, name varchar(50), location
+varchar(50), owner varchar(50));
+CREATE TABLE powerproduction (id int primary key not null, hour int, production int, powerunit_id int);
+Insert into powerunit (id, name, location, owner) values (100, ‘Electro-PumpsET’, ‘Vaasa’, ‘SheidaCom’);
+Insert into powerunit (id, name, location, owner) values (200, ‘Hydraulic Power Packs’, ‘Series UP’, ‘Helsinki’, ZamaniCom);
+Insert into powerunit (id, name, location, owner) values (300, ‘Hydraulic Power Packs’, ‘M-Series’, ‘Tampere’, NilCom);
+
+insert into powerproduction (id, hour, production, powerunit_id) values (1, 2017011901, 20, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (2, 2017011902, 10, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (3, 2017011903, 33, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (4, 2017011904, 11, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (5, 2017011905, 3, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (6, 2017011906, 5, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (7, 2017011907, 77, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (8, 2017011908, 66, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (9, 2017011909, 5, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (10, 2017011910, 5, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (11, 2017011911, 21, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (12, 2017011912, 45, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (13, 2017011913, 32, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (14, 2017011914, 10, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (15, 2017011915, 44, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (16, 2017011916, 6, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (17, 2017011917, 5, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (18, 2017011918, 8, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (19, 2017011919, 76, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (20, 2017011920, 21, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (21, 2017011921, 34, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (22, 2017011922, 53, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (23, 2017011923, 32, 100);
+insert into powerproduction (id, hour, production, powerunit_id) values (24, 2017011924, 22, 100);
+
+select * from powerproduction;
+select * from powerproduction where id=19;
+select powerunit.name, hour, production from powerunit, powerproduction where powerunit.id=powerproduction.powwrunit_id;

@@ -1,0 +1,52 @@
+Q1
+
+select title from Movie where director like 'Steven Spielberg';
+
+Q2:
+
+select year from Movie, Rating where Movie.mID = Rating.mID and (Rating.stars=4 OR Rating.stars=5) and Rating.ratingDate is not NULL order by year asc;
+
+Q3:
+
+select title from Movie where mID not in (select mID from Rating);
+
+Q4:
+
+select name from Reviewer, Rating where Reviewer.rID = Rating.rID and Rating.ratingDate is NULL;
+
+Q5.
+
+select Reviewer.name, Movie.title, Rating.stars, Rating.ratingDate
+FROM Rating join Reviewer on Rating.rID = Reviewer.rID
+join Movie on Movie.mID=Rating.mID
+order by Reviewer.name, Movie.title, stars
+
+Q6.
+
+select name, title from Reviewer, Movie, Rating, Rating r2
+where Rating.mID=Movie.mID and Reviewer.rID=Rating.rID
+and Rating.rID = r2.rID and r2.mID = Movie.mID
+and Rating.stars < r2.stars and Rating.ratingDate < r2.ratingDate;
+
+Q7.
+
+select title, MAX(stars) from Rating
+join Movie on Movie.mID=Rating.mID
+group by Movie.mID
+order by title
+
+Q8.
+
+select title, AVG(stars) as avst from Rating
+join Movie on Movie.mID=Rating.mID
+group by Movie.mID
+order by avst DESC, title
+
+Q9.
+
+select name from Reviewer where rID in (
+select rID from (
+select rID, count(mID) as cnt
+from rating
+group by rID
+having cnt > 2) as t)
